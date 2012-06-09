@@ -1,0 +1,269 @@
+<?php
+/**
+ * @file  jquery_cdn.module
+ * Updates Drupal to use a CDN copy of jQuery.
+ */
+
+/**
+ * Helper function to find out if Drupal is beeing hosted on a secure server
+ */
+function jquery_cdn_is_secure_server() {
+  return (!empty($_SERVER['HTTPS'])) && ($_SERVER['HTTPS'] != 'off');
+}
+
+/**
+ * Implements hook_library_alter().
+ * See: http://api.drupal.org/api/drupal/modules--system--system.api.php/function/hook_library_alter/7
+ *
+ * Get CDN "Minified" versions only - no need for dev versions on production servers
+ *
+ * For JQuery Set up one of 3 CDN's, list from: http://docs.jquery.com/Downloading_jQuery#CDN_Hosted_jQuery
+ * Google Ajax API CDN => http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js
+ * Microsoft CDN => http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.2.min.js
+ * jQuery CDN => http://code.jquery.com/jquery-1.5.2.min.js
+ *
+ * For JQuery UI set up one of 2 CDN's, list from http://blog.jqueryui.com/2011/02/jquery-ui-1-8-10/
+ * Google Ajax API CDN => http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js
+ * Microsoft CDN => http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.12/jquery-ui.min.js
+ */
+function jquery_cdn_library_alter(&$libraries, $module) {
+  // Debug only - comment out!
+  /* var_dump($libraries); /* */
+
+  // load settings - defaults as per Drupal 7.0 released on 2011-Jan-05
+  $cdn_location = variable_get('jquery_cdn_location', 'google');
+  $cdn_version = variable_get('jquery_cdn_version', '1.4.4');
+  $cdn_ui_location = variable_get('jqueryui_cdn_location', 'google');
+  $cdn_ui_version = variable_get('jqueryui_cdn_version', '1.8.7');
+  $cdn_ui_theme = variable_get('jqueryui_cdn_theme', 'ui-lightness');
+
+  // Replace jQuery
+  $cdn_ssl = jquery_cdn_is_secure_server();
+  if (isset($libraries['jquery'])) :
+    switch ($cdn_location) :
+      case 'google' :
+        $cdn_jquery_path = 'http://ajax.googleapis.com/ajax/libs/jquery/*|ver|*/jquery.min.js';
+        break;
+      case 'microsoft' :
+        $cdn_jquery_path = 'http://ajax.aspnetcdn.com/ajax/jQuery/jquery-*|ver|*.min.js';
+        break;
+      case 'jquery' :
+        $cdn_jquery_path = 'http://code.jquery.com/jquery-*|ver|*.min.js';
+        $cdn_ssl = FALSE;  // always off, jQuery CDN does not host over SSL
+        break;
+      default :  // google-smart
+        $cdn_jquery_path = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
+        $cdn_version = '99.9';  // fake
+        break;
+    endswitch;
+    $cdn_jquery_path = str_replace('*|ver|*', $cdn_version, $cdn_jquery_path);
+    if ($cdn_ssl) $cdn_jquery_path = str_replace('http://', 'https://', $cdn_jquery_path);
+
+    $libraries['jquery']['js']['misc/jquery.js']['data'] = $cdn_jquery_path;
+    if (isset($libraries['jquery']['version']))
+      $libraries['jquery']['version'] = $cdn_version;
+    $libraries['jquery']['js']['misc/jquery.js']['type'] = 'external';
+  endif;
+
+  // Fix for bug #1147258
+  if (isset($libraries['jquery.form'])) :
+    $__go = ($cdn_location == 'google-smart') || empty($cdn_location);
+    if (!$__go) :
+      $__ver = explode('.', $cdn_version, 3);
+      $__ver = floatval( $__ver[0] . '.' . (isset($__ver[1]) ? $__ver[1] : 0) );
+      $__go = $__ver >= 1.5;
+    endif;
+
+    if ($__go) :
+      $alt_jquery_from_path = "http://github.com/malsup/form/raw/master/jquery.form.js";
+      if ($cdn_ssl) $alt_jquery_from_path = str_replace('http://', 'https://', $alt_jquery_from_path);
+
+      $libraries['jquery.form']['js']['misc/jquery.form.js']['data'] = $alt_jquery_from_path;
+      if (isset($libraries['jquery.form']['version']))
+        $libraries['jquery.form']['version'] = '99.9';
+      $libraries['jquery.form']['js']['misc/jquery.form.js']['type'] = 'external';
+    endif;
+  endif;
+
+  // Replace jQuery UI
+  $cdn_ssl = jquery_cdn_is_secure_server();  // need to reset incase 'jquery' cdn used above
+  if (isset($libraries['ui'])) :
+    switch ($cdn_ui_location) :
+      case 'google' :
+        $cdn_jquery_ui_path  = 'http://ajax.googleapis.com/ajax/libs/jqueryui/*|ver|*/jquery-ui.min.js';
+        $cdn_jquery_ui_theme = 'http://ajax.googleapis.com/ajax/libs/jqueryui/*|ver|*/themes/*|theme|*/jquery-ui.css';
+        break;
+      case 'microsoft' :
+        $cdn_jquery_ui_path  = 'http://ajax.microsoft.com/ajax/jquery.ui/*|ver|*/jquery-ui.min.js';
+        $cdn_jquery_ui_theme = 'http://ajax.microsoft.com/ajax/jquery.ui/*|ver|*/themes/*|theme|*/jquery-ui.css';
+        break;
+      default :  // google-smart
+        $cdn_jquery_ui_path = 'http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js';
+        $cdn_jquery_ui_theme = 'http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/*|theme|*/jquery-ui.css';
+        $cdn_ui_version = '99.9';
+        break;
+    endswitch;
+    $cdn_jquery_ui_path = str_replace('*|ver|*', $cdn_ui_version, $cdn_jquery_ui_path);
+    $cdn_jquery_ui_theme = str_replace('*|theme|*', $cdn_ui_theme, str_replace('*|ver|*', $cdn_ui_version, $cdn_jquery_ui_theme));
+    if ($cdn_ssl) :
+      $cdn_jquery_ui_path = str_replace('http://', 'https://', $cdn_jquery_ui_path);
+      $cdn_jquery_ui_theme = str_replace('http://', 'https://', $cdn_jquery_ui_theme);
+    endif;
+
+    $libraries['ui']['js']['misc/ui/jquery.ui.core.min.js']['data'] = $cdn_jquery_ui_path;
+    if (isset($libraries['ui']['version']))
+      $libraries['ui']['version'] = $cdn_ui_version;
+    $libraries['ui']['js']['misc/ui/jquery.ui.core.min.js']['type'] = 'external';
+
+    // Kill all sub-.js files as the CDN versions of jQueryUI contain all the subs already consolidated
+    $killlist = drupal_map_assoc(array(
+      'ui.accordion',
+      'ui.autocomplete',
+      'ui.button',
+      'ui.datepicker',
+      'ui.dialog',
+      'ui.draggable',
+      'ui.droppable',
+      'ui.mouse',
+      'ui.position',
+      'ui.progressbar',
+      'ui.resizable',
+      'ui.selectable',
+      'ui.slider',
+      'ui.sortable',
+      'ui.tabs',
+      'ui.widget',
+      'effects.blind',
+      'effects.bounce',
+      'effects.clip',
+      'effects.drop',
+      'effects.explode',
+      'effects.fade',
+      'effects.fold',
+      'effects.highlight',
+      'effects.pulsate',
+      'effects.scale',
+      'effects.shake',
+      'effects.slide',
+      'effects.transfer',
+      ));
+    $killlist['effects'] = 'effects.core';
+    foreach ($killlist as $lib => $filepart) :
+      if (isset($libraries[$lib]))
+        unset($libraries[$lib]);
+    endforeach;
+
+    // now for the CSS
+    if (isset($libraries['ui']['css']['misc/ui/jquery.ui.core.css']))
+      unset($libraries['ui']['css']['misc/ui/jquery.ui.core.css']);  // core consolidated in CDN - kill it
+    $libraries['ui']['css']['misc/ui/jquery.ui.theme.css']['data'] = $cdn_jquery_ui_theme;
+    $libraries['ui']['css']['misc/ui/jquery.ui.theme.css']['type'] = 'external';
+  endif;
+
+  // Debug only - comment out!
+  /* var_dump($libraries); /* */
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function jquery_cdn_form_system_performance_settings_alter(&$form, &$form_state, $form_id) {
+  /* jQuery */
+  $form['bandwidth_optimization']['jquery_cdn_location'] = array(
+    '#type'          => 'fieldset',
+    '#title'         => t("jQuery CDN"),
+    '#description'   => t("Replace Drupal's jQuery with one hosted on a Content Delivery Network"),
+    '#collapsible'   => TRUE,
+    '#collapsed'     => TRUE,
+    );
+
+  $form['bandwidth_optimization']['jquery_cdn_location']['jquery_cdn_location'] = array(
+    '#type' => 'radios',
+    '#title' => t('jQuery CDN'),
+    '#default_value' => variable_get('jquery_cdn_location', 'google-smart'),
+    '#options' => array(
+      'google' => t('Google Ajax API CDN'),
+      'google-smart' => t('Google Ajax API CDN (<b>Dynamic</b> alias to latest version 1.x.x)'),
+      'microsoft' => t('Microsoft CDN'),
+      ),
+    );
+  if (!jquery_cdn_is_secure_server())
+    $form['bandwidth_optimization']['jquery_cdn_location']['jquery_cdn_location']['#options']['jquery'] = t('jQuery CDN (via Media Temple)');
+
+  $form['bandwidth_optimization']['jquery_cdn_location']['jquery_cdn_version'] = array(
+    '#type' => 'select',
+    '#title' => t('jQuery Version'),
+    '#default_value' => variable_get('jquery_cdn_version', '1.4.4'),
+    '#description' => t('<b>Note:</b> This value will be ignored if you choose "Dynamic" above' .
+      '<br />' .
+      '<b>Note:</b> <code>jQuery.from.js</code> will be retrieved from the authors GitHub current version for jQuery &gt;= 1.5' .
+      ' - this workaround is not guaranteed to work, so please test and disuse if you experience problems'),
+    '#options' => array(
+      '1.4.4' => t('1.4.4, rel. 2010-Nov-11 (as in Drupal 7.0, 2011-Jan-05)'),  // keep this one
+      // '1.5' => t('1.5, rel. 2011-Jan-31'),
+      // '1.5.1' => t('1.5.1, rel. 2011-Feb-24'),
+      '1.5.2' => t('1.5.2, rel. 2011-Mar-31'),
+      // '1.6' => t('1.6, rel. 2011-May-3'),
+      '1.6.1' => t('1.6.1, rel. 2011-May-12'),
+      ),
+    );
+
+  /* jQuery UI */
+  $form['bandwidth_optimization']['jqueryui_cdn_location'] = array(
+    '#type'          => 'fieldset',
+    '#title'         => t("jQuery UI CDN"),
+    '#description'   => t("Replace Drupal's jQuery UI with one hosted on a Content Delivery Network"),
+    '#collapsible'   => TRUE,
+    '#collapsed'     => TRUE,
+    );
+
+  $form['bandwidth_optimization']['jqueryui_cdn_location']['jqueryui_cdn_location'] = array(
+    '#type' => 'radios',
+    '#title' => t('jQuery CDN'),
+    '#default_value' => variable_get('jqueryui_cdn_location', 'google-smart'),
+    '#options' => array(
+      'google' => t('Google Ajax API CDN'),
+      'google-smart' => t('Google Ajax API CDN (<b>Dynamic</b> alias to latest version 1.x.x)'),
+      'microsoft' => t('Microsoft CDN'),
+      ),
+    );
+  $form['bandwidth_optimization']['jqueryui_cdn_location']['jqueryui_cdn_version'] = array(
+    '#type' => 'select',
+    '#title' => t('jQuery UI Version'),
+    '#default_value' => variable_get('jqueryui_cdn_version', '1.8.7'),  // as of 2011-Mar-5
+    '#description' => t('<b>Note:</b> This value will be ignored if you choose "Dynamic" above'),
+    '#options' => array(
+      '1.8.7' => t('1.8.7, rel. 2010-Dec-10 (as in Drupal 7.0, 2011-Jan-05)'),  // keep this one
+      // '1.8.8' => t('1.8.8, rel. 2011-Jan-14'),
+      // '1.8.9' => t('1.8.9, rel. 2011-Jan-21'),
+      // '1.8.10' => t('1.8.10, rel. 2011-Feb-24'),
+      '1.8.12' => t('1.8.12, rel. 2011-Apr-15'),
+      ),
+    );
+  $form['bandwidth_optimization']['jqueryui_cdn_location']['jqueryui_cdn_theme'] = array(
+    '#type' => 'select',
+    '#title' => t('jQuery UI Theme'),
+    '#default_value' => variable_get('jqueryui_cdn_theme', 'ui-lightness'),
+    '#description' => t('Visit <code><a href="@url" target="_blank">@url</a></code> for examples', Array('@url' => 'http://jqueryui.com/themeroller')),
+    '#options' => array(
+      'base' => 'base',
+      'black-tie' => 'black-tie',
+      'blitzer' => 'blitzer',
+      'cupertino' => 'cupertino',
+      'dot-luv' => 'dot-luv',
+      'excite-bike' => 'excite-bike',
+      'hot-sneaks' => 'hot-sneaks',
+      'humanity' => 'humanity',
+      'mint-choc' => 'mint-choc',
+      'redmond' => 'redmond',
+      'smoothness' => 'smoothness',
+      'south-street' => 'south-street',
+      'start' => 'start',
+      'swanky-purse' => 'swanky-purse',
+      'trontastic' => 'trontastic',
+      'ui-darkness' => 'ui-darkness',
+      'ui-lightness' => 'ui-lightness',
+      'vader' => 'vader',
+      ),
+    );
+}

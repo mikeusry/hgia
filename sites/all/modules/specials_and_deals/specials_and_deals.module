@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Specials and Deals feature.
+ */
+
+include_once 'specials_and_deals.features.inc';

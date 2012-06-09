@@ -1,0 +1,7 @@
+
+Changelog
+---------
+
+2011-05-18 Public Release 7.x-1.0 of code
+2011-05-19 Changes in jquery_cdn.module to correct issue #1160046
+

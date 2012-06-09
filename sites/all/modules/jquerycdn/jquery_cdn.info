@@ -1,0 +1,14 @@
+name = jQuery CDN
+description = Updates jQuery to use public Content Delivery Networks (CDN)
+package = User interface
+core = 7.x
+files[] = jquery_cdn.module
+files[] = jquery_cdn.install
+configure = admin/config/development/performance
+
+; Information added by drupal.org packaging script on 2011-05-30
+version = "7.x-1.1"
+core = "7.x"
+project = "jquerycdn"
+datestamp = "1306737716"
+

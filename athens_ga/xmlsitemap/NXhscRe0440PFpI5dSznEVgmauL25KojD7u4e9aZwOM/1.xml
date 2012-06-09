@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>http://hilton.loc/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+<url><loc>http://hilton.loc/content/contact</loc><lastmod>2012-06-08T12:18Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://hilton.loc/meetings</loc><lastmod>2012-06-08T15:39Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://hilton.loc/location</loc><lastmod>2012-06-08T16:17Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://hilton.loc/local-attractions</loc><lastmod>2012-06-08T20:47Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://hilton.loc/where-eat</loc><lastmod>2012-06-08T20:48Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://hilton.loc/downtown-athens</loc><lastmod>2012-06-08T20:48Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://hilton.loc/slide-one</loc><lastmod>2012-06-09T11:58Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://hilton.loc/slide-two</loc><lastmod>2012-06-09T11:58Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://hilton.loc/suite-life</loc><lastmod>2012-06-09T13:19Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://hilton.loc/thank-you</loc><lastmod>2012-06-08T12:21Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://hilton.loc/things-do</loc><lastmod>2012-06-09T14:01Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://hilton.loc/home-page</loc><lastmod>2012-06-08T20:40Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://hilton.loc/hotel-accommodations</loc><lastmod>2012-06-08T15:40Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://hilton.loc/deluxe-king-room</loc><lastmod>2012-06-08T15:32Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://hilton.loc/deluxe-queen</loc><lastmod>2012-06-08T15:32Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://hilton.loc/alcove-suite</loc><lastmod>2012-06-08T15:32Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://hilton.loc/king-suite</loc><lastmod>2012-06-08T15:32Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://hilton.loc/presidential-suite</loc><lastmod>2012-06-08T15:32Z</lastmod><changefreq>daily</changefreq></url>
+</urlset>

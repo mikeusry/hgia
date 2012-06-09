@@ -1,0 +1,183 @@
+/* @override 
+	http://hilton.loc/sites/all/themes/navin/css/prolifik-base.css?m5bgn5
+	http://hilton.loc/sites/all/themes/navin/css/prolifik-base.css?m5cpcl
+	http://hilton.loc/sites/all/themes/navin/css/prolifik-base.css?m5cq9x
+*/
+
+/* This file will hold the main styles for your website. */
+
+/* Links */
+a, a:link {
+  text-decoration: none;
+}
+a, a:link, a:visited, a:active {
+  color: #AD3B43;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Headers */
+body > #page h1, body > #page h2, body > #page h3,
+body > #page h4, body > #page h5, body > #page h6 {
+  border-color: #D4D4D4;
+  color: #191F53;
+  font-weight: normal;
+  letter-spacing: 0;
+  line-height: 1em;
+}
+
+body > #page h1#page-title {
+  color: #191F53;
+}
+
+/* Admin Menu */
+#admin-menu {
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  -khtml-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -ms-filter: none;
+  filter: none;
+}
+
+/* Drupal */
+#messages .messages {
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* Page */
+#page {
+  position: relative;
+}
+
+/* Blocks */
+.block .content {
+  color: #626262;
+}
+.block .content li {
+  margin-left: 2em;
+}
+.block .content .item-list li {
+  margin: 0;
+}
+
+
+
+/* Sidebar */
+#region-sidebar-first div.block-title,
+#region-sidebar-second div.block-title {
+}
+#region-sidebar-first .block:first-child div.block-title {
+  margin-top: 0;
+}
+
+.boxes-box-controls ul {
+  margin: 0;
+}
+
+/* Content */
+
+ul.tabs {
+  *padding-top: 1px;
+}
+
+div.image-left a img, div.left img {
+	float: left;
+	margin-right: 1%;
+	margin-bottom: 1%;
+}
+
+div.check-availablity {
+	text-align: center;
+	background-color: #BF2B37;
+}
+
+div.check-availablity a {
+	color: white;
+}
+
+div.view-specials-packages div.views-row, div.view-rooms div.views-row {
+	border-top: thin solid #AD3B43;
+	border-bottom: thin solid #AD3B43;
+	padding-top: 10px;
+	margin-top: 3px;
+}
+
+div.view-specials-packages div.views-row img {
+	
+}
+
+
+/* @group Quicktabs */
+
+#quicktabs-_none_ div.item-list ul.quicktabs-tabs.quicktabs-style-nostyle li.active {
+	font-weight: bold;
+}
+
+#quicktabs-_none_ div.item-list ul.quicktabs-tabs.quicktabs-style-nostyle li {
+	  background: rgb(242,237,237); /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIzMiUiIHN0b3AtY29sb3I9IiNmMmVkZWQiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OSUiIHN0b3AtY29sb3I9IiNkM2NmZDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  rgba(242,237,237,1) 32%, rgba(211,207,208,1) 99%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(32%,rgba(242,237,237,1)), color-stop(99%,rgba(211,207,208,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(242,237,237,1) 32%,rgba(211,207,208,1) 99%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(242,237,237,1) 32%,rgba(211,207,208,1) 99%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(242,237,237,1) 32%,rgba(211,207,208,1) 99%); /* IE10+ */
+background: linear-gradient(top,  rgba(242,237,237,1) 32%,rgba(211,207,208,1) 99%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2eded', endColorstr='#d3cfd0',GradientType=0 );
+
+}
+
+
+ul.quicktabs-tabs li {
+  display: inline;
+  background: none;
+  list-style-type: none;
+  padding: 1%;
+  white-space: nowrap;
+	border-top: thin solid #CACCCB;
+	border-right: thin solid #CACCCB;
+}
+
+ul.quicktabs-tabs li a {
+	color: #253690;
+}
+
+
+/* @end */
+
+/* @group Custom Blocks */
+
+#block-block-1 {
+	background-color: #BF2B37;
+	padding: 10px;
+	color: white;
+}
+
+#block-block-1 label {
+	color: white;
+	font-weight: lighter;
+}
+
+#block-block-3 div.content a img {
+	width: 100%;
+	height: auto;
+}
+
+#block-block-3 div.block-title h2.block-title div.text {
+	text-align: center;
+	margin-top: 40px;
+}
+
+
+
+
+/* @end */
+
