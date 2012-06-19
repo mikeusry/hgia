@@ -1,12 +1,22 @@
 /* @override 
-	http://hilton.loc/sites/all/themes/navin/css/prolifik-footer.css?m5bgn5
-	http://hilton.loc/sites/all/themes/navin/css/prolifik-footer.css?m5cq9x
+	http://hi-express.loc/sites/all/themes/navin/css/prolifik-footer.css?m5m03s
+	http://hi-express.loc/sites/all/themes/navin/css/prolifik-footer.css?m5pnkk
 */
 
 /* Footer */
 #zone-footer-wrapper {
-  background: #191F53;
   z-index: 1;
+	padding-top: 10px;
+/* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiMwMDYwYzEiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGUzYzdhIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+background: -moz-linear-gradient(top,  rgba(0,96,193,1) 50%, rgba(14,60,122,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,rgba(0,96,193,1)), color-stop(100%,rgba(14,60,122,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(0,96,193,1) 50%,rgba(14,60,122,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(0,96,193,1) 50%,rgba(14,60,122,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(0,96,193,1) 50%,rgba(14,60,122,1) 100%); /* IE10+ */
+background: linear-gradient(top,  rgba(0,96,193,1) 50%,rgba(14,60,122,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0060c1', endColorstr='#0e3c7a',GradientType=0 ); /* IE6-8 */
 }
 #zone-footer-wrapper a,
 #zone-footer-wrapper a:link
@@ -14,7 +24,12 @@
   color: #fff;
 }
 #zone-footer-wrapper .block .content {
-  color: #fff;
+  color: white;
+}
+
+#zone-footer {
+	padding-left: 10px;
+	padding-right: 10px;
 }
 #zone-footer-wrapper div.block-title {
   margin: 15px 0;
@@ -67,4 +82,9 @@
 body > #page #zone-footer h1, body > #page #zone-footer h2, body > #page #zone-footer h3,
 body > #page #zone-footer h4, body > #page #zone-footer h5, body > #page #zone-footer h6 {
   color: #fff;
+}
+
+#block-webform-client-block-1 div.block-title, #block-webform-client-block-1 div.block-title h2.block-title  {
+	margin: 0;
+	padding: 0;
 }

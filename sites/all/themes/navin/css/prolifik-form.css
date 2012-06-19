@@ -1,3 +1,5 @@
+/* @override http://hi-express.loc/sites/all/themes/navin/css/prolifik-form.css?m5pnkk */
+
 /* Navin: Form */
 textarea, select, input[type="date"], input[type="datetime"],
 input[type="datetime-local"], input[type="email"], input[type="month"],
@@ -21,6 +23,11 @@ input[type="text"], input[type="time"], input[type="url"], input[type="week"] {
   border-radius: 5px;
   color: #626262;
   z-index: 1;
+	width: 95%;
+}
+
+textarea#edit-submitted-message.form-textarea.required {width: 95%;
+	
 }
 button:focus, button:active, input:focus, input:active, select:focus, select:active, textarea:focus, textarea:active {
   -moz-box-shadow: none;

@@ -5,9 +5,11 @@
   <title><?php print $head_title; ?></title>  
   <?php print $styles; ?>
  <script src="/SpryAssets/SpryAccordion.js" type="text/javascript"></script>
+  <script src="/SpryAssets/SpryCollapsiblePanel.js" type="text/javascript"></script>
  <script src="/SpryAssets/js/jquery-1.7.2.min.js" type="text/javascript"></script>
  <script src="/SpryAssets/js/jquery-ui-1.8.21.custom.min.js" type="text/javascript"></script>
 <link href="/SpryAssets/SpryAccordion.css" rel="stylesheet" type="text/css" />
+<link href="/SpryAssets/SpryCollapsiblePanel.css" rel="stylesheet" type="text/css" />
   <?php print $scripts; ?>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
