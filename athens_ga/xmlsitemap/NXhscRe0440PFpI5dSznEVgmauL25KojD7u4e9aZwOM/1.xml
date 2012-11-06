@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<<<<<<< HEAD
 <url><loc>http://hiltongardeninnathens.com/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
 <url><loc>http://hiltongardeninnathens.com/content/contact</loc><lastmod>2012-06-09T17:26Z</lastmod><changefreq>monthly</changefreq></url>
 <url><loc>http://hiltongardeninnathens.com/meetings</loc><lastmod>2012-06-18T20:25Z</lastmod><changefreq>monthly</changefreq></url>
@@ -28,4 +29,22 @@
 <url><loc>http://hiltongardeninnathens.com/alcove</loc><lastmod>2012-06-29T17:57Z</lastmod><changefreq>monthly</changefreq></url>
 <url><loc>http://hiltongardeninnathens.com/king-suite</loc><lastmod>2012-06-20T19:38Z</lastmod><changefreq>monthly</changefreq></url>
 <url><loc>http://hiltongardeninnathens.com/presidential-suite</loc><lastmod>2012-06-28T18:59Z</lastmod><changefreq>monthly</changefreq></url>
+=======
+<url><loc>http://default/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+<url><loc>http://default/content/contact</loc><lastmod>2012-06-09T17:26Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://default/meetings</loc><lastmod>2012-06-16T14:52Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://default/location</loc><lastmod>2012-06-16T15:11Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://default/local-attractions</loc><lastmod>2012-06-12T10:35Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://default/where-eat</loc><lastmod>2012-06-08T20:48Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://default/downtown-athens</loc><lastmod>2012-06-08T20:48Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://default/thank-you</loc><lastmod>2012-06-08T12:21Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://default/things-do</loc><lastmod>2012-06-09T14:01Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://default/home-page</loc><lastmod>2012-06-14T13:55Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://default/hotel-accommodations</loc><lastmod>2012-06-16T13:04Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://default/deluxe-king-room</loc><lastmod>2012-06-08T15:32Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://default/deluxe-queen</loc><lastmod>2012-06-08T15:32Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://default/alcove-suite</loc><lastmod>2012-06-08T15:32Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://default/king-suite</loc><lastmod>2012-06-08T15:32Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://default/presidential-suite</loc><lastmod>2012-06-08T15:32Z</lastmod><changefreq>weekly</changefreq></url>
+>>>>>>> 223c3da0f1d9b5be2f323fd9394e3b6e06a3927d
 </urlset>

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* @override http://hiltongardeninnathens.com/sites/all/themes/navin/css/navin-alpha-default-narrow.css?m61cx6 */
+=======
+/* @override http://hi-express.loc/sites/all/themes/navin/css/navin-alpha-default-narrow.css?m5pnkk */
+>>>>>>> 223c3da0f1d9b5be2f323fd9394e3b6e06a3927d
 
 /* This file will hold styles that are loaded using the same media query as the narrow grid. */
 
@@ -32,6 +36,7 @@
   float: left;
   display: block;
 }
+<<<<<<< HEAD
 
 div.main-home {
 	float: left;
@@ -76,3 +81,5 @@ img#logo {
 
 
 /* @end */
+=======
+>>>>>>> 223c3da0f1d9b5be2f323fd9394e3b6e06a3927d

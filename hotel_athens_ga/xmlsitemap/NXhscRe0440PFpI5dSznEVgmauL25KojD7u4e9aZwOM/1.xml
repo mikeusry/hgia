@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>http://hi-express.loc/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+<url><loc>http://hi-express.loc/content/contact</loc><lastmod>2012-06-09T17:26Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://hi-express.loc/meetings</loc><lastmod>2012-06-12T10:52Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://hi-express.loc/location</loc><lastmod>2012-06-09T16:43Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://hi-express.loc/local-attractions</loc><lastmod>2012-06-12T10:35Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://hi-express.loc/where-eat</loc><lastmod>2012-06-08T20:48Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://hi-express.loc/downtown-athens</loc><lastmod>2012-06-08T20:48Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://hi-express.loc/slide-one</loc><lastmod>2012-06-09T11:58Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://hi-express.loc/slide-two</loc><lastmod>2012-06-09T11:58Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://hi-express.loc/suite-life</loc><lastmod>2012-06-09T13:19Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://hi-express.loc/thank-you</loc><lastmod>2012-06-08T12:21Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://hi-express.loc/things-do</loc><lastmod>2012-06-09T14:01Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://hi-express.loc/home-page</loc><lastmod>2012-06-08T20:40Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://hi-express.loc/hotel-accommodations</loc><lastmod>2012-06-12T11:06Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://hi-express.loc/deluxe-king-room</loc><lastmod>2012-06-08T15:32Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://hi-express.loc/deluxe-queen</loc><lastmod>2012-06-08T15:32Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://hi-express.loc/alcove-suite</loc><lastmod>2012-06-08T15:32Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://hi-express.loc/king-suite</loc><lastmod>2012-06-08T15:32Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://hi-express.loc/presidential-suite</loc><lastmod>2012-06-08T15:32Z</lastmod><changefreq>weekly</changefreq></url>
+</urlset>

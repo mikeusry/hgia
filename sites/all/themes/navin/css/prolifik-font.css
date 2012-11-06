@@ -1,8 +1,3 @@
-/* @override 
-	http://hilton.loc/sites/all/themes/navin/css/prolifik-font.css?m5bgn5
-	http://hilton.loc/sites/all/themes/navin/css/prolifik-font.css?m5cq9x
-*/
-
 /* Body */
 body { font-size: 62.5%;
 	text-align: justify;
@@ -29,6 +24,7 @@ div.block-title h2.block-title {
   font-size: 2.4em;
 	margin-top: 10px;
 	margin-bottom: 5px;
+	text-align: center;
 }
 
 /* Content */
