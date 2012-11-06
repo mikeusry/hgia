@@ -20,6 +20,11 @@ define('SOCIALMEDIA_LINK_REL_PROFILE_DEFAULT', '<none>');
 define('SOCIALMEDIA_LINK_REL_SHARING_DEFAULT', '<none>');
 define('SOCIALMEDIA_ICON_DEFAULT_STYLE_DEFAULT', 'levelten_glossy:32x32');
 
+// Permissions
+define('SOCIALMEDIA_PERM_ADMINISTER','administer social media');
+define('SOCIALMEDIA_PERM_ADMINISTER_OWN_PROFILES','administer own social profiles');
+define('SOCIALMEDIA_PERM_ADMINISTER_ANY_PROFILES','administer any social profiles');
+
 // TODO figure out better way to include widgetx_elements
 include_once drupal_get_path('module', 'socialmedia') . '/socialmedia.widgets.inc';
 include_once drupal_get_path('module', 'socialmedia') . '/socialmedia.platforms.inc';
@@ -31,13 +36,17 @@ include_once drupal_get_path('module', 'socialmedia') . '/socialmedia.icons.inc'
  */
 function socialmedia_permission() {
   return array(
-    'administer social media' => array(
+    SOCIALMEDIA_PERM_ADMINISTER => array(
       'title' => t('Administer social media'),
       'description' => t('Can configure any social media settings and profiles.'),
     ),
-    'administer own profiles' => array(
-      'title' => t('Administer own profiles'),
+    SOCIALMEDIA_PERM_ADMINISTER_OWN_PROFILES => array(
+      'title' => t('Administer own social profiles'),
       'description' => t('Can setup user level social media profiles for their user account.'),
+    ),
+    SOCIALMEDIA_PERM_ADMINISTER_ANY_PROFILES => array(
+      'title' => t('Administer any social profiles'),
+      'description' => t('Can setup user level social media profiles for any user account.'),
     ),
   );
 }
@@ -145,7 +154,8 @@ function socialmedia_menu() {
     'page callback' => 'drupal_get_form',
     'page arguments' => array('socialmedia_admin_profiles_form', 'user', 1),
     //'page arguments' => array(),
-    'access arguments' => array('administer own profiles'),
+    'access callback' => 'socialmedia_user_profile_access',
+    'access arguments' => array(1),
     'type' => MENU_LOCAL_TASK,
     'file' => 'socialmedia.admin.inc',
   );
@@ -175,6 +185,18 @@ function socialmedia_menu() {
     'type' => MENU_CALLBACK,
   );
   return $items;
+}
+
+/**
+ * Access callback for user social profiles edition page
+ * @global User $user Current user
+ * @param User $account User whose profile is accessed
+ * @return boolean Access granted
+ */
+function socialmedia_user_profile_access($account) {
+  global $user;
+  return user_access(SOCIALMEDIA_PERM_ADMINISTER_ANY_PROFILES)
+      || $account->uid==$user->uid && user_access(SOCIALMEDIA_PERM_ADMINISTER_OWN_PROFILES); 
 }
 
 function socialmedia_util() {
@@ -408,11 +430,17 @@ function socialmedia_get_context_author_uid($data) {
   if (isset($data['node']->uid)) {
     $uid = $data['node']->uid; 
   }
-  elseif ((arg(0) == 'node') && is_numeric(arg(1))) {         
-    $uid = menu_get_object()->uid;
+  elseif ((arg(0) == 'node') && is_numeric(arg(1))) {
+    $obj = menu_get_object();
+    if (is_object($obj))  {
+      $uid = $obj->uid;
+    }
   }
   elseif (arg(0) == 'user' && is_numeric(arg(1))) {
-    $uid = menu_get_object('user', 1)->uid;
+    $obj = menu_get_object('user', 1);
+    if (is_object($obj))  {
+      $uid = $obj->uid;
+    }
   } 
   drupal_alter('socialmedia_context_author_uid', $uid, $data);
   return $uid;

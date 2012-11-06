@@ -44,7 +44,7 @@ function socialmedia_admin_settings() {
     '#default_value' => variable_get('socialmedia_platforms_user', $defaults),
     '#description' => t('Select the platforms you want active for user level profiles. Only users with the !permissions permission will be able to add user profiles.',
       array(
-        '!permissions' => l(t('Administer own profiles'), 'admin/people/permissions'),
+        '!permissions' => l(t('Administer own social profiles'), 'admin/people/permissions'),
       )
      ),
     '#options' => $options,
@@ -366,7 +366,7 @@ function socialmedia_admin_profiles_form_validate($form, &$form_state) {
 		  if ($setup_mode && (!isset($inputs[$platform_name]['url']) || !trim($inputs[$platform_name]['url']))) {
 		    continue;
 		  }
-			call_user_func($platform['parser callback'], $inputs[$platform_name]);
+			call_user_func($platform['parser callback'], $inputs[$platform_name], 'user');
 		}
 	}
 }
@@ -587,7 +587,7 @@ function socialmedia_admin_share_widgets_form_submit($form, $form_state) {
 function socialmedia_element_in_set($element, $set) {
 //dsm($element);
 //dsm($set);
-  if (is_array($set['elements'])) {
+  if (isset($set['elements']) && is_array($set['elements'])) {
     foreach ($set['elements'] AS $e) {
       if ($element['name'] == $e['name']) {
         return TRUE;

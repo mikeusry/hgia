@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Meeting Areas feature.
+ */
+
+include_once 'meeting_areas.features.inc';

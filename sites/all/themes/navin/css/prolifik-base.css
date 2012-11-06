@@ -1,7 +1,6 @@
 /* @override 
-	http://hilton.loc/sites/all/themes/navin/css/prolifik-base.css?m5bgn5
-	http://hilton.loc/sites/all/themes/navin/css/prolifik-base.css?m5cpcl
-	http://hilton.loc/sites/all/themes/navin/css/prolifik-base.css?m5cq9x
+	http://hiltongardeninnathens.com/sites/all/themes/navin/css/prolifik-base.css?m68eu4
+	http://hiltongardeninnathens.com/sites/all/themes/navin/css/prolifik-base.css?m68ixy
 */
 
 /* This file will hold the main styles for your website. */
@@ -83,25 +82,117 @@ body > #page h1#page-title {
 }
 
 /* Content */
+aside .block-title {
+	text-align: center;
+}
 
 ul.tabs {
   *padding-top: 1px;
 }
 
-div.image-left a img, div.left img {
+div.image-left a img, div.left img, img.left {
 	float: left;
 	margin-right: 1%;
 	margin-bottom: 1%;
 }
 
-div.check-availablity {
-	text-align: center;
-	background-color: #BF2B37;
+#node-room-27 div.node-bottom img {
+	width: 45%;
+	padding: 2%;
 }
 
-div.check-availablity a {
-	color: white;
+/* @group Home Page */
+
+img.three-pic {
+	margin: 1%;
+	width: 30%;
 }
+
+div.home-right-gutter {
+	display: none;
+}
+div.home-right-gutter img {
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: thin solid silver;
+}
+
+#block-block-7 div.block-title h2.block-title {
+	text-align: center;
+}
+
+#block-block-7 div.content p {
+	margin-bottom: 0;
+	text-align: center;
+}
+
+#block-block-7 img {
+	width: 100%;
+	height: auto;
+	border: thick solid gray;
+	margin-bottom: 20px;
+}
+
+
+
+/* @end */
+
+/* @group Reserve Form */
+
+#block-block-1 {
+	background-color: #ac3a42;
+	color: white;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	padding: 10px 10%;
+}
+
+div.book-now {
+	color: white;
+	font-weight: bold;
+	font-size: 2.25em;
+	text-align: center;
+}
+
+#block-block-1 label {
+	color: white;
+	font-weight: lighter;
+	margin-right: 10px;
+	display: block;
+	position: relative;
+	top: 10px;
+	clear: both;
+}
+
+#booking input#arrival.hasDatepicker, #booking input#departure.hasDatepicker  {width: 80%;margin-top: 8px;}
+
+#booking form span.pound {
+	color: black;
+	font-size: 22px;
+	position: relative;
+	top: 10px;
+	left: 5px;
+}
+
+#booking #numRooms {width: 80%;margin-top: 8px;
+	margin-left: 9px;
+}
+
+#booking #submit {
+	margin-top: 10px;
+	display: block;
+	float: none;
+	clear: both;
+	position: relative;
+	width: 50%;
+	margin-left: 25%;
+}
+
+
+
+/* @end */
 
 div.view-specials-packages div.views-row, div.view-rooms div.views-row {
 	border-top: thin solid #AD3B43;
@@ -113,6 +204,7 @@ div.view-specials-packages div.views-row, div.view-rooms div.views-row {
 div.view-specials-packages div.views-row img {
 	
 }
+
 
 
 /* @group Quicktabs */
@@ -155,29 +247,120 @@ ul.quicktabs-tabs li a {
 
 /* @group Custom Blocks */
 
-#block-block-1 {
-	background-color: #BF2B37;
-	padding: 10px;
-	color: white;
+#webform-client-form-1 input.form-text, #edit-submitted-message {
+	width: 100%;
+	max-width: 440px;
 }
 
-#block-block-1 label {
-	color: white;
-	font-weight: lighter;
+#block-block-2, #block-webform-client-block-1 {
+	margin-left: 20px;
 }
 
-#block-block-3 div.content a img {
+#block-block-3 img, #block-block-6 img {
 	width: 100%;
 	height: auto;
+	max-width: 480px;
 }
 
 #block-block-3 div.block-title h2.block-title div.text {
 	text-align: center;
-	margin-top: 40px;
+	margin-top: 35px;
+}
+#block-block-3 {
+	text-align: center;
+}
+
+#block-block-5 {margin-top: 2%;text-align: center;}
+
+#block-block-5 img {max-width: 39px;
+	margin-right: 5px;
+	margin-left: 5px;
+
+}
+
+#block-block-5 .plus {
+	position: relative;
+	bottom: 3px;
+}
+
+#block-block-4 {
+	text-align: center;
+}
+
+#block-block-6 {
+	margin-top: 10px;
+}
+
+div.reservations {
+	font-weight: lighter;
+	font-size: 2em;
+}
+
+div.number {
+	font-size: 2.25em;
+	line-height: .5em;
 }
 
 
 
-
 /* @end */
+
+.node-type-room div.field-type-image div.field-item img {width: 100%;height: auto;
+	
+}
+
+body.node-type-room div.more-link, #block-media-gallery-34 div.content div.more-link {
+	display: none;	
+}
+
+div.accommodations-slides img {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	position: relative;
+	top: 30px;
+}
+
+#block-views-rooms-block div.block-title {
+	text-align: center;
+	background-color: #ac3a42;
+	color: white;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+#block-views-rooms-block div.block-title div.text {
+	color: white;
+	padding: 5px;
+}
+
+div.view-footer img {
+width: 100%;
+height: auto;	
+}
+
+div.view-id-rooms div.view-header p {
+	text-align: center;
+	font-style: italic;
+	margin-bottom: 0;
+}
+
+#block-views-rooms-block-1, #block-views-rooms-block-2 {
+	text-align: justify;
+	position: relative;
+	top: 30px;
+	margin-top: 30px;
+}
+
+#block-views-rooms-block-1 img, #block-views-rooms-block-2 img, {
+	width: 100%;
+	height: auto;
+	clear: both;
+}
+
+img.hundred {width: 100%;height: auto;margin-top: 10px;
+}
+
+
+
 

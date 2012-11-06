@@ -49,6 +49,7 @@ function socialmedia_icon_platforms($featured = FALSE) {
     //'mixx' => t('Mixx'),
     //'myspace' => t('MySpace'),
     'newsvine' => t('Newsvine'),
+    'pinterest' => t('Pinterest'),
     'reddit' => t('Reddit'),
     'rss' => t('RSS'),
     //'slashdot' => t('Slashdot'),
@@ -87,15 +88,15 @@ function socialmedia_iconset_info() {
 
 function socialmedia_socialmedia_iconset_info() {
   $icons['levelten_glossy'] = array(
-    'name' => 'LevelTen Glossy',
-    'publisher' => 'LevelTen Interactive',
-    'publisher url' => 'http://www.leveltendesign.com',
-    'styles' => array(
+    'name' => 'LevelTen Glossy',                                 // name of your icon set
+    'publisher' => 'LevelTen Interactive',                       // name of publisher  
+    'publisher url' => 'http://www.leveltendesign.com',          // url to publisher's site 
+    'styles' => array(                                           // different variants of icons available  
       '16x16' => '16x16',
       '32x32' => '32x32', 
       '48x48' => '48x48', 
     ),
-    'path callback' => 'socialmedia_icon_path_levelten_glossy',
+    'path callback' => 'socialmedia_icon_path_levelten_glossy',  // callback for icon urls
   );
   $icons['icondock'] = array(
     'name' => 'Icon Dock Vector',

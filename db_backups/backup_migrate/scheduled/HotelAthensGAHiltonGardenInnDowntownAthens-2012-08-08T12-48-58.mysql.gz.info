@@ -1,0 +1,8 @@
+filename = "HotelAthensGAHiltonGardenInnDowntownAthens-2012-08-08T12-48-58"
+description = ""
+datestamp = "1344444546"
+generator = "Backup and Migrate (http://drupal.org/project/backup_migrate)"
+generatorversion = "7.x-2.x"
+sites[0][version] = "7.14"
+sites[0][name] = "Hotel Athens, GA | Hilton Garden Inn | Downtown Athens"
+sites[0][url] = "http://hiltongardeninnathens.com/"

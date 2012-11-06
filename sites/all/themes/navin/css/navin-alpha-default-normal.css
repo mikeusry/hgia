@@ -1,0 +1,61 @@
+/* @override http://hiltongardeninnathens.com/sites/all/themes/navin/css/navin-alpha-default-normal.css?m61cx6 */
+
+/* This file will hold styles that are loaded using the same media query as the normal grid. */
+
+#logo {
+  width: 400px;
+}
+
+/* Search Form */
+#block-search-form {
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 35px;
+  width: 300px;
+  z-index: 1;
+}
+
+div.main-home {
+	float: left;
+	width: 60%;
+	margin-right: 5%;
+}
+div.home-right-gutter {
+	width: 35%;
+	display: inline-block;
+}
+
+
+/* @group Header | Branding */
+
+#zone-branding {
+	height: 228px;
+	background: url(../images/hotel_athens_ga_normal.jpg) no-repeat center;
+}
+
+#block-block-4 {
+	text-align: right;
+}
+
+div.reservations {
+	color: white;
+}
+
+#block-block-5 div.content {
+	text-align: right;
+	margin-top: 10px;
+	position: relative;
+	left: 10px;
+	top: 10px;
+}
+
+img#logo {
+	position: relative;
+	right: 20px;
+	top: -20px;
+}
+
+
+
+/* @end */

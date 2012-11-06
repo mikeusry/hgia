@@ -1,4 +1,7 @@
-/* @override http://hilton.loc/sites/all/themes/navin/css/prolifik-branding.css?m5bgn5 */
+/* @override 
+	http://hiltongardeninnathens.com/sites/all/themes/navin/css/prolifik-branding.css?m5cq9x
+	http://hiltongardeninnathens.com/sites/all/themes/navin/css/prolifik-branding.css?m5u0on
+*/
 
 /* Branding */
 #zone-branding-wrapper {
@@ -16,16 +19,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#590b0b', end
 }
 #zone-branding {
   position: relative;
+  background-color: white;
 }
 #region-branding {
   margin: 0;
   padding: 0;
-  width: 100%;
   position: relative;
 }
 #region-branding .region-inner {
   padding: 20px;
-	background-color: white;
 }
 
 .logo-img {

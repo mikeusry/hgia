@@ -1,0 +1,10 @@
+<?php
+/**
+ * @file
+ * GetClicky: Adds the GetClicky tracking system to your website.
+ *
+ */
+
+function getclicky_uninstall() {
+  $result = db_query("DELETE FROM {variable} WHERE name LIKE 'getclicky_%'");
+}
