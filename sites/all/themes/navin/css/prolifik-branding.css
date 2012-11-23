@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-/* @override 
-	http://hiltongardeninnathens.com/sites/all/themes/navin/css/prolifik-branding.css?m5cq9x
-	http://hiltongardeninnathens.com/sites/all/themes/navin/css/prolifik-branding.css?m5u0on
-*/
-=======
-/* @override http://hi-express.loc/sites/all/themes/navin/css/prolifik-branding.css?m5m03s */
->>>>>>> 223c3da0f1d9b5be2f323fd9394e3b6e06a3927d
-
 /* Branding */
 #zone-branding-wrapper {
 	}
@@ -17,10 +8,6 @@
 #region-branding {
   margin: 0;
   padding: 0;
-<<<<<<< HEAD
-=======
-
->>>>>>> 223c3da0f1d9b5be2f323fd9394e3b6e06a3927d
   position: relative;
 }
 #region-branding .region-inner {

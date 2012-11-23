@@ -2,7 +2,7 @@
 * Provide the HTML to create the modal dialog.
 */
 Drupal.theme.prototype.ModalFormsPopup = function () {
-  var html = ''
+  var html = '';
 
   html += '<div id="ctools-modal" class="popups-box">';
   html += '  <div class="ctools-modal-content modal-forms-modal-content">';
@@ -17,5 +17,4 @@ Drupal.theme.prototype.ModalFormsPopup = function () {
   html += '</div>';
 
   return html;
-
 }

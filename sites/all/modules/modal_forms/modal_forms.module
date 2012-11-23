@@ -1,7 +1,8 @@
 <?php
 /**
- * @file modal_forms.module
- * TODO: Enter file description here.
+ * @file
+ * Modal Forms allows you to activate a Ctools based
+ * ajax modal on common Drupal forms
  */
 
 /**
@@ -16,7 +17,7 @@ function modal_forms_init() {
 }
 
 /**
- * Implementation of hook_menu().
+ * Implements hook_menu().
  */
 function modal_forms_menu() {
   $items['admin/config/development/modal_forms'] = array(
@@ -56,6 +57,31 @@ function modal_forms_menu() {
     'page callback' => 'modal_forms_contact',
     'page arguments' => array(1),
     'access arguments' => array('access site-wide contact form'),
+    'file' => 'modal_forms.pages.inc',
+    'type' => MENU_CALLBACK,
+  );
+  $items['modal_forms/%ctools_js/comment/reply/%node'] = array(
+    'title' => 'Comment',
+    'page callback' => 'modal_forms_comment_reply',
+    'page arguments' => array(1, 4),
+    'access arguments' => array('post comments'),
+    'file' => 'modal_forms.pages.inc',
+    'type' => MENU_CALLBACK,
+  );
+  $items['modal_forms/%ctools_js/webform/%node'] = array(
+    'title' => 'Webform',
+    'page callback' => 'modal_forms_view_webform',
+    'page arguments' => array(1, 3),
+    'access callback' => 'node_access',
+    'access arguments' => array('view', 3),
+    'file' => 'modal_forms.pages.inc',
+    'type' => MENU_CALLBACK,
+  );
+  $items['modal_forms/%ctools_js/dismiss'] = array(
+    'title' => 'Dismiss',
+    'page callback' => 'modal_forms_dismiss',
+    'page arguments' => array(1),
+    'access callback' => TRUE,
     'file' => 'modal_forms.pages.inc',
     'type' => MENU_CALLBACK,
   );
@@ -109,6 +135,22 @@ function modal_forms_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
+ * Implements hook_form_BASE_FROM_ID_alter().
+ */
+function modal_forms_form_comment_form_alter(&$form, &$form_state, $form_id) {
+  if (variable_get('modal_forms_comment', 0)) {
+    $comment = $form_state['comment'];
+
+    // If not replying to a comment, use our dedicated page callback for new
+    // comments on nodes.
+    if (empty($comment->cid) && empty($comment->pid)) {
+      // Change the action to call our function.
+      $form['#action'] = url('modal_forms/nojs/comment/reply/' . $comment->nid);
+    }
+  }
+}
+
+/**
  * Check if modal_forms should be active for the current URL.
  *
  * @return
@@ -117,14 +159,15 @@ function modal_forms_form_alter(&$form, &$form_state, $form_id) {
 function _modal_forms_active() {
   // Code from the block_list funtion in block.module.
   $path = drupal_get_path_alias($_GET['q']);
-  $modal_forms_pages = variable_get('modal_forms_pages', "admin*\nimg_assist*\nimce*\nnode/add/*\nnode/*/edit");
+  $modal_forms_pages = variable_get('modal_forms_pages', "admin*\nimagebrowser*\nimg_assist*\nimce*\nnode/add/*\nnode/*/edit\nprint/*\nprintpdf/*\nsystem/ajax\nsystem/ajax/*");
   // Compare with the internal and path alias (if any).
   $page_match = drupal_match_path($path, $modal_forms_pages);
   if ($path != $_GET['q']) {
     $page_match = $page_match || drupal_match_path($_GET['q'], $modal_forms_pages);
   }
+  $page_match = variable_get('modal_forms_visibility', 0) == 0 ? !$page_match : $page_match;
 
-  return !$page_match;
+  return $page_match;
 }
 
 /**
@@ -218,6 +261,10 @@ function _modal_forms_doheader() {
 
   if (variable_get('modal_forms_contact', 0)) {
     drupal_add_js($path . '/js/modal_forms_contact.js', array('weight' => -20));
+  }
+
+  if (user_access('post comments') && variable_get('modal_forms_comment', 0)) {
+    drupal_add_js($path . '/js/modal_forms_comment.js', array('weight' => -20));
   }
 
   $already_added = TRUE;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Token processing for social media
+ */
+
 function socialmedia_token_info() {
   $type = array(
     'name' => t('Social media'), 
@@ -17,15 +22,15 @@ function socialmedia_token_info() {
   foreach ($profiles AS $platform => $data) {
     if (is_array($data['tokens'])) {
       foreach ($data['tokens'] AS $ttype => $tdata) {
-        if($ttype == 'multi') {
-          foreach($tdata AS $key => $ttdata) {
+        if ($ttype == 'multi') {
+          foreach ($tdata AS $key => $ttdata) {
             $tokens['socialmedia']['sm-' . $key] = $ttdata;
             $tokens['site']['sm-' . $key] = $ttdata;
             $tokens['user']['sm-' . $key] = $ttdata;
           }
         }
         else {
-          foreach($tdata AS $key => $ttdata) {
+          foreach ($tdata AS $key => $ttdata) {
             $tokens[$ttype]['sm-' . $key] = $ttdata;
           }
         }
@@ -42,10 +47,10 @@ function socialmedia_token_info() {
   
   $platforms = socialmedia_icon_platforms();
   foreach ($platforms AS $platform => $name) {
-	  $tokens['socialmedia']['sm-' . $platform . '_icon-path:?'] = array(
-	    'name' => t('@platform icon path', array('@platform' => $name)),
-	    'description' => t("The path to the @platform icon", array('@platform' => $name)),
-	  );
+    $tokens['socialmedia']['sm-' . $platform . '_icon-path:?'] = array(
+      'name' => t('@platform icon path', array('@platform' => $name)),
+      'description' => t("The path to the @platform icon", array('@platform' => $name)),
+    );
   }
   
   $defaults = array(
@@ -66,7 +71,7 @@ function socialmedia_token_info() {
   foreach ($defaults AS $key => $value) {
     $tokens['socialmedia']['sm-default-' . $key] = array(
       'name' => $value,
-      'description' => $value . t(' values set in social media config.'),
+      'description' => $value . ' ' . t('values set in social media config.'),
     );    
   }
   
@@ -88,51 +93,58 @@ function socialmedia_token_info() {
 }
 
 function socialmedia_tokens($type, $tokens, array $data = array(), array $options = array()) {
+//dsm($type);
+//dsm($data);
   $replacements = array();
   if ($type == 'current-page') {
-  	if (isset($tokens['title-plain'])) {
-  		$replacements[$tokens['title-plain']] = strip_tags(drupal_get_title());
-  	}
+    if (isset($tokens['title-plain'])) {
+      $replacements[$tokens['title-plain']] = strip_tags(drupal_get_title());
+    }
   }
   if (($type == 'site') || ($type == 'user') || ($type == 'socialmedia')) {
     //$uid = (($type == 'user') && isset($data['user']->uid)) ? $data['user']->uid : 0; 
     foreach ($tokens as $name => $original) {
       if (strpos($name, 'sm-') === 0) {
-      	list($platform_name, $hash) = explode('_', substr($name, 3), 2);
-      	// process icon paths
+        list($platform_name, $hash) = explode('_', substr($name, 3), 2);
+        // process icon paths
         if (strpos($platform_name, 'default') === 0) {
           $replacements[$original] = socialmedia_default_tokens($hash);
           continue;         
         }
-      	if (strpos($hash, 'icon-path') === 0) {
+        if (strpos($hash, 'icon-path') === 0) {
           $replacements[$original] = socialmedia_icon_tokens($platform_name, $hash);
-      		continue;
-      	}
-      	$profile = NULL;
-      	// if token has user context, load the profiles for the user      	
-        if ((($type == 'user') || ($type == 'socialmedia'))) {
-        	$uid = socialmedia_get_context_author_uid($data);
-        	if (isset($uid) && $uid) {
+          continue;
+        }
+        $profile = NULL;
+        // if token has user context, load the profiles for the user        
+        $profile_context = (isset($data['set']['data']['socialmedia']['profile_context'])) ? $data['set']['data']['socialmedia']['profile_context'] : 'usersite';
+        if ((strpos($profile_context, 'user') !== FALSE) 
+          && (($type == 'user') || ($type == 'socialmedia'))) {
+          $uid = socialmedia_get_context_author_uid($data);
+          if (isset($uid) && $uid) {
             $profile = socialmedia_profile_load($platform_name, $uid);
-        	}
+          }
         }
         // if site context or user profile not found, load site profile
-        if (($type == 'site') || (($type == 'socialmedia') && (!isset($profile['result']) || !$profile['result']))) {
+        if ((strpos($profile_context, 'site') !== FALSE) 
+          && (($type == 'site') 
+            || (($type == 'socialmedia') && (strpos($profile_context, 'user') !== FALSE) && (!isset($profile['result']) || !$profile['result'])))) {
           $profile = socialmedia_profile_load($platform_name, 0);
         }
         $platform = socialmedia_platform_definition_load($platform_name);
         $replacement = call_user_func($platform['tokens callback'], $hash, $profile);
         if (!isset($replacement) || $replacement === FALSE) {
-			    $msg = t('You are trying to use a social media %platform profile token but the profile has not been set. !link',
-			      array(
-			        '%platform' => $platform['title'],
-			        '!link' => l(t('Set @platform profile.', array('@platform' => $platform['title'])), 'admin/config/media/socialmedia')
-			      )
-			    );
-			    _socialmedia_widgets_set_error($data['widgets']['element'], $msg);
+          $msg = t('You are trying to use a social media %platform profile token but the profile has not been set. !link',
+            array(
+              '%platform' => $platform['title'],
+              '!link' => l(t('Set @platform profile.', array('@platform' => $platform['title'])), 'admin/config/media/socialmedia')
+            )
+          );
+          //_socialmedia_widgets_set_error($data['widgets']['element'], $msg);
+          _socialmedia_widgets_set_error($data['widgets']['element'], '');
         }
         else {
-        	$replacements[$original] = $replacement;
+          $replacements[$original] = $replacement;
         }
       }
     }
@@ -163,7 +175,7 @@ function socialmedia_icon_tokens($platform_name, $hash) {
     return '';
   }
   list($iconset, $style) = explode(':', $s);
-  return base_path() . call_user_func($iconsets[$iconset]['path callback'], $platform_name, $style);	
+  return base_path() . call_user_func($iconsets[$iconset]['path callback'], $platform_name, $style);  
 }
 
 

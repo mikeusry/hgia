@@ -3,7 +3,7 @@
 
 /**
  * @file
- * Admin page callback for the socialmedia module.
+ * Setup wizard
  */
 
 /*
@@ -270,7 +270,7 @@ function socialmedia_setup_4_form($form, $form_state) {
   foreach ($types AS $typename => $type) {
     $form['share_set']['share_content_types']['contenttype_' . $typename] = array(
       '#type' => 'checkboxes',
-      '#title' => $type->name,
+      '#title' => filter_xss($type->name),
       '#options' => $options,
       '#default_value' => isset($set['data']['visibility']['content_types'][$typename]) ? $set['data']['visibility']['content_types'][$typename] : array(),
     ); 

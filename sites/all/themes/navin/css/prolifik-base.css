@@ -1,14 +1,7 @@
 /* @override 
-<<<<<<< HEAD
-	http://hiltongardeninnathens.com/sites/all/themes/navin/css/prolifik-base.css?m68eu4
-	http://hiltongardeninnathens.com/sites/all/themes/navin/css/prolifik-base.css?m68ixy
-=======
-	http://hi-express.loc/sites/all/themes/navin/css/prolifik-base.css?m5m03s
-	http://hi-express.loc/sites/all/themes/navin/css/prolifik-base.css?m5pnkk
->>>>>>> 223c3da0f1d9b5be2f323fd9394e3b6e06a3927d
-*/
-
-/* This file will hold the main styles for your website. */
+	http://www.hiltongardeninnathens.com/sites/all/themes/navin/css/prolifik-base.css?md2tbg
+	http://www.hiltongardeninnathens.com/sites/all/themes/navin/css/prolifik-base.css?md2tsa
+	http://www.hiltongardeninnathens.com/sites/all/themes/navin/css/prolifik-base.css?md2twq */
 
 /* Links */
 a, a:link {
@@ -101,7 +94,6 @@ div.image-left a img, div.left img, img.left {
 	margin-bottom: 1%;
 }
 
-<<<<<<< HEAD
 #node-room-27 div.node-bottom img {
 	width: 45%;
 	padding: 2%;
@@ -206,7 +198,7 @@ div.view-specials-packages div.views-row, div.view-rooms div.views-row {
 	padding-top: 10px;
 	margin-top: 3px;
 }
-=======
+
 img.left {
 	float: left;
 	margin-right: 5px;
@@ -219,23 +211,12 @@ img.left {
 	height: auto;
 }
 
->>>>>>> 223c3da0f1d9b5be2f323fd9394e3b6e06a3927d
-
 
 /* @end */
-
-<<<<<<< HEAD
-
-/* @group Quicktabs */
-=======
-/* @group Sitewide */
->>>>>>> 223c3da0f1d9b5be2f323fd9394e3b6e06a3927d
 
 #block-block-6 div.content a {
 	clear: both;
 }
-
-
 
 /* @end */
 
@@ -245,15 +226,11 @@ body.context-hotel-accommodations #zone-postfix img {
 	width: 100%;
 	height: auto;
 }
-
-
 div.rooms {
 	float: left;
 	width: 60%;
 }
 
-
-<<<<<<< HEAD
 #webform-client-form-1 input.form-text, #edit-submitted-message {
 	width: 100%;
 	max-width: 440px;
@@ -306,15 +283,13 @@ div.room-styles {
 div.room-class {
 	clear: left;
 	height: 160px;
->>>>>>> 223c3da0f1d9b5be2f323fd9394e3b6e06a3927d
 }
 
 #block-block-5 {margin-top: 2%;text-align: center;}
 
-#block-block-5 img {max-width: 39px;
+#block-block-5 img {max-width: 40px;
 	margin-right: 5px;
 	margin-left: 5px;
-
 }
 
 #block-block-5 .plus {
@@ -339,8 +314,6 @@ div.number {
 	font-size: 2.25em;
 	line-height: .5em;
 }
-
-
 /* @end */
 
 /* @group Blocks */
@@ -349,13 +322,9 @@ div.number {
 	font-size: 1.75em;
 }
 
-
-
 /* @end */
 
-.node-type-room div.field-type-image div.field-item img {width: 100%;height: auto;
-	
-}
+.node-type-room div.field-type-image div.field-item img {width: 100%;height: auto;}
 
 body.node-type-room div.more-link, #block-media-gallery-34 div.content div.more-link {
 	display: none;	
@@ -406,9 +375,9 @@ div.view-id-rooms div.view-header p {
 	clear: both;
 }
 
-img.hundred {width: 100%;height: auto;margin-top: 10px;
+img.hundred {width: 100%;height: auto;margin-top: 10px; display: none;
 }
 
-
-
-
+#block-block-9 img {
+	width: 100%; overflow: hidden; display: none;
+}

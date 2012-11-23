@@ -1,20 +1,14 @@
 /* @override 
-	http://hilton.loc/sites/all/themes/navin/css/prolifik-menu.css?m5bgn5
-	http://hilton.loc/sites/all/themes/navin/css/prolifik-menu.css?m5cpcl
-<<<<<<< HEAD
-	http://hiltongardeninnathens.com/sites/all/themes/navin/css/prolifik-menu.css?m5xjp8
-=======
-	http://btcv.biz/sites/all/themes/prolifik/css/prolifik-menu.css?m5f2cd
-	http://hi-express.loc/sites/all/themes/navin/css/prolifik-menu.css?m5pnkk
->>>>>>> 223c3da0f1d9b5be2f323fd9394e3b6e06a3927d
-*/
+	http://www.hiltongardeninnathens.com/sites/all/themes/navin/css/prolifik-menu.css?md2tbg
+	http://www.hiltongardeninnathens.com/sites/all/themes/navin/css/prolifik-menu.css?md2tsa */
 
 /* Menu */
 
 #zone-menu {
   min-height: 30px;
   z-index: 10;
-  }
+  background-color: #27398c;
+}
 
 #zone-menu-wrapper {
 	-webkit-box-shadow: #666 0px 0px 10px;
@@ -32,7 +26,6 @@ background: -o-linear-gradient(top,  rgba(14,60,122,1) 0%,rgba(0,96,193,1) 100%)
 background: -ms-linear-gradient(top,  rgba(14,60,122,1) 0%,rgba(0,96,193,1) 100%); /* IE10+ */
 background: linear-gradient(top,  rgba(14,60,122,1) 0%,rgba(0,96,193,1) 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e3c7a', endColorstr='#0060c1',GradientType=0 ); /* IE6-8 */
-
 }
 #region-menu .region-inner {
   margin: 0 -10px;
@@ -47,11 +40,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e3c7a', end
   padding: 0;
   position: relative;
   display: block;
-<<<<<<< HEAD
   text-align: center;
-=======
-text-align: center;
->>>>>>> 223c3da0f1d9b5be2f323fd9394e3b6e06a3927d
 }
 
 

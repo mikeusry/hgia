@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @file
+ * Implements apps api
+ */
+
 /**
 * Implements hook_apps_app_info().
 */

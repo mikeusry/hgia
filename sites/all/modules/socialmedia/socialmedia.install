@@ -30,37 +30,37 @@ function socialmedia_uninstall() {
 function socialmedia_schema() {
   $schema = array();
 
-	$schema['socialmedia_profile'] = array(
-	  'description' => 'Stores social media profile data',
-	  'fields' => array(
-	    'smid' => array(
-	      'description' => 'Primary id',
-	      'type' => 'serial',
-	      'not null' => TRUE,
-	    ),
-	    'platform' => array(
-	      'description' => 'machine name identifier of the platform of the profile',
-	      'type' => 'varchar',
-	      'length' => '128',
-	      'not null' => TRUE,
-	    ),
-	    'uid' => array(
-	      'description' => 'User id the profile belongs to. Site profiles have a uid of 0',
-	      'type' => 'int',
-	      'unsigned' => TRUE,
-	      'not null' => TRUE,
-	    ),
-	    'data' => array(
-	      'description' => 'Profile data',
-	      'type' => 'text',
-	      'not null' => TRUE,
-	    ),
-	  ),
-	  'primary key' => array('smid'),
-	  'indexes' => array(
-	    'platform' => array('platform', 'uid'),
-	  ),
-	);
+  $schema['socialmedia_profile'] = array(
+    'description' => 'Stores social media profile data',
+    'fields' => array(
+      'smid' => array(
+        'description' => 'Primary id',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ),
+      'platform' => array(
+        'description' => 'machine name identifier of the platform of the profile',
+        'type' => 'varchar',
+        'length' => '128',
+        'not null' => TRUE,
+      ),
+      'uid' => array(
+        'description' => 'User id the profile belongs to. Site profiles have a uid of 0',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'data' => array(
+        'description' => 'Profile data',
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('smid'),
+    'indexes' => array(
+      'platform' => array('platform', 'uid'),
+    ),
+  );
 
   return $schema;
 }
